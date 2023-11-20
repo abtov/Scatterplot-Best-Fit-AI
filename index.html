@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="row">
+    <canvas id="canvases"></canvas>
+    <div class="consoles">
+      <div id="consoles"></div>
+    </div>
+  </div>
+  <div class="info-text">
+    <div class="controls">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+        <button id="best_display">Show Best</button>
+        <input type="text" id="paddle" placeholder="paddle speed (20)" value="4">
+        <input type="text" id="ball" placeholder="ball speed (10)" value="2">
+    </div>
+    <div id="info"></div>
+  </div>
+  <script src="source/App.js"></script>
+  <script src="source/Neural.js"></script>
+  <script src="source/Graphic.js"></script>
+  <script src="source/Generation.js"></script>
+</body>
+
+</html>
