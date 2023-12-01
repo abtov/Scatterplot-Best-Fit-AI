@@ -68,17 +68,17 @@ class Plane {
             if(x == this.padding) continue;
 
             ctx.beginPath();
-            ctx.strokeStyle = "rgba(0, 0, 0, 0.06)";
+            ctx.strokeStyle = "rgba(0, 0, 0, 0.04)";
             ctx.moveTo(Math.round(x), this.end.y[0]);
             ctx.lineTo(Math.round(x), this.end.y[1]);
-            ctx.fill();
+            ctx.stroke();
         }
 
         for(let y = this.padding; y < this.end.y[1]; y += this.gap.y) {
             if(y == this.padding) continue;
 
             ctx.beginPath();
-            ctx.strokeStyle = "rgba(0, 0, 0, 0.06)";
+            ctx.strokeStyle = "rgba(0, 0, 0, 0.04)";
             ctx.moveTo(this.end.x[0], Math.round(y));
             ctx.lineTo(this.end.x[1], Math.round(y));
             ctx.stroke();
@@ -118,11 +118,11 @@ class Plane {
             this.e_y = (((this.max.x * input[0]) + input[1]) * -1 * this.ratio.y) + this.start.y;
             this.e_x = (this.max.x * this.ratio.x) + this.start.x;
 
-            this.s_y = lerp(this.e_y, this.s_y, 1);
-            this.s_x = lerp(this.e_x, this.s_x, 1);
+            this.s_y = lerp(this.e_y, this.s_y, 2);
+            this.s_x = lerp(this.e_x, this.s_x, 2);
 
-            this.e_y = lerp(this.s_y, this.e_y, 1);
-            this.e_x = lerp(this.s_x, this.e_x, 1);
+            this.e_y = lerp(this.s_y, this.e_y, 2);
+            this.e_x = lerp(this.s_x, this.e_x, 2);
             //console.log([this.s_x, this.s_y], [this.e_x, this.e_y], slope)
 
             ctx.beginPath();
@@ -133,6 +133,12 @@ class Plane {
             ctx.stroke();
 
             ctx.lineWidth = 1;
+
+            this.s_y = (((-1 * this.max.x * input[0]) + (input[1])) * -1 * this.ratio.y) + this.start.y; // -389
+            this.e_y = (((this.max.x * input[0]) + (input[1])) * -1 * this.ratio.y) + this.start.y;
+
+            this.s_y = lerp(this.e_y, this.s_y, 2);
+            this.e_y = lerp(this.s_y, this.e_y, 2);
         }
     }
 }
